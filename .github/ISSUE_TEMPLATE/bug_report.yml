@@ -62,23 +62,13 @@ body:
       description: 'Output of `nvim --version`'
       placeholder: 'e.g. 0.9.0, 0.10.0'
     validations:
-      required: true
-
-  - type: input
-    attributes:
-      label: 'Telescope version'
-      description: 'Your Telescope version'
-      placeholder: 'e.g. 0.1.8'
-    validations:
-      required: true
+      required: false
 
   - type: input
     attributes:
       label: 'Plugin version'
-      description: 'telescope-gitignore.nvim version'
+      description: 'If using lazy, Output of `nvim --headless -c "lua for _, p in pairs(require('lazy').plugins()) do print((p._.loaded and '[loaded] ' or '[lazy]   ') .. p.name) end" +qa`'
       placeholder: 'e.g. 1.0.0'
-    validations:
-      required: true
 
   - type: textarea
     attributes:
