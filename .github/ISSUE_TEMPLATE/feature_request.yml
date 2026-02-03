@@ -1,42 +1,47 @@
 name: Feature Request
 description: Suggest an idea for this project
-title: '[FEATURE] '
+title: '[FEATURE]: '
 labels: [enhancement]
 body:
   - type: markdown
     attributes:
       value: |
-        Before requesting:
-        * search [existing issues](https://github.com/your-username/telescope-gitignore.nvim/issues)
-        * ensure that telescope-gitignore.nvim is updated to the latest version
+        ### Thanks for wanting to improve telescope-gitignore.nvim!
+        Before requesting, please:
+        * Search [existing issues](https://github.com/your-username/telescope-gitignore.nvim/issues) to avoid duplicates.
+        * Ensure you are on the latest version of the plugin.
 
   - type: textarea
+    id: problem
     attributes:
-      label: 'Is your feature request related to a problem? Please describe.'
+      label: 'Is your feature request related to a problem?'
       description: 'A clear and concise description of what the problem is.'
       placeholder: 'I am always frustrated when [...]'
     validations:
       required: true
 
   - type: textarea
+    id: solution
     attributes:
       label: 'Describe the solution you would like'
       description: 'A clear and concise description of what you want to happen.'
-      placeholder: |
-        I would like to be able to [...]
+      placeholder: 'I would like to be able to [...]'
     validations:
       required: true
 
   - type: textarea
-    attributes:
-      label: 'Describe alternatives you have considered'
-      description: 'A clear and concise description of any alternative solutions or features you have considered.'
-      placeholder: |
-        I have tried [...] but it doesn't work because [...]
-
-  - type: textarea
+    id: additional
     attributes:
       label: 'Additional context'
-      description: 'Add any other context or screenshots about the feature request here.'
-      placeholder: |
-        Any additional information that might be helpful.
+      description: 'Add any other context, screenshots, or examples here.'
+      placeholder: 'Any additional information that might be helpful.'
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 'Checklist'
+      options:
+        - label: 'I have checked that this feature doesn''t already exist.'
+          required: true
+        - label: 'I am willing to submit a PR for this feature (Optional).'
+          required: false
