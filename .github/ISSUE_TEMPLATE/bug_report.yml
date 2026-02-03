@@ -71,13 +71,10 @@ body:
         Please paste the output of the command for your manager:
 
         **For lazy.nvim:**
-        `nvim --headless -c "lua for _, p in pairs(require('lazy').plugins()) do print(p.name .. ' @ ' .. (p.commit or p.tag or 'latest')) end" +qa`
+        `nvim --headless -c "lua for _, p in pairs(require('lazy').plugins()) do local rev = p.commit or vim.fn.system('git -C ' .. p.dir .. ' rev-parse --short HEAD'):gsub('\n', ''); print(p.name .. ' @ ' .. (rev ~= '' and rev or 'unknown')) end" +qa`
 
         **For vim.pack (Built-in):**
-        `nvim --headless -c "lua for _, p in ipairs(vim.fn.globpath(vim.o.packpath, '**/start/*', 0, 1)) do local name = vim.fn.fnamemodify(p, ':t'); local rev = vim.fn.system('git -C ' .. p .. ' rev-parse --short HEAD'):gsub('\n', ''); print(name .. ' @ ' .. (rev ~= '' and rev or 'no-git')) end" +qa`
-      placeholder: |
-        telescope.nvim @ 8c3460d
-        plenary.nvim @ v0.1.4
+        `nvim --headless -c "lua for _, p in ipairs(vim.fn.globpath(vim.o.packpath, '**/start/*', 0, 1)) do local name = vim.fn.fnamemodify(p, ':t'); local rev = vim.fn.system('git -C ' .. p .. ' rev-parse --short HEAD'):gsub('\n', ''):sub(1,7); print(name .. ' @ ' .. (rev ~= '' and rev or 'no-git')) end" +qa`
     validations:
       required: true
 
