@@ -62,13 +62,24 @@ body:
       description: 'Output of `nvim --version`'
       placeholder: 'e.g. 0.9.0, 0.10.0'
     validations:
-      required: false
+      required: true
 
-  - type: input
+  - type: textarea
     attributes:
-      label: 'Plugin version'
-      description: 'If using lazy, Output of `nvim --headless -c "lua for _, p in pairs(require('lazy').plugins()) do print((p._.loaded and '[loaded] ' or '[lazy]   ') .. p.name) end" +qa`'
-      placeholder: 'e.g. 1.0.0'
+      label: 'Plugin List & Versions'
+      description: |
+        Please paste the output of the command for your manager:
+
+        **For lazy.nvim:**
+        `nvim --headless -c "lua for _, p in pairs(require('lazy').plugins()) do print(p.name .. ' @ ' .. (p.commit or p.tag or 'latest')) end" +qa`
+
+        **For vim.pack (Built-in):**
+        `nvim --headless -c "lua for _, p in ipairs(vim.fn.globpath(vim.o.packpath, '**/start/*', 0, 1)) do local name = vim.fn.fnamemodify(p, ':t'); local rev = vim.fn.system('git -C ' .. p .. ' rev-parse --short HEAD'):gsub('\n', ''); print(name .. ' @ ' .. (rev ~= '' and rev or 'no-git')) end" +qa`
+      placeholder: |
+        telescope.nvim @ 8c3460d
+        plenary.nvim @ v0.1.4
+    validations:
+      required: true
 
   - type: textarea
     attributes:
