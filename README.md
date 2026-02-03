@@ -15,6 +15,8 @@ Features:
 - Customizable selection behavior
 - Automatic caching for performance
 
+![telescope-gitignore-example](/assets/header.png)
+
 ## Install
 
 ### `lazy.nvim`
