@@ -1,0 +1,88 @@
+name: Bug Report
+description: Report a problem to help us improve
+title: '[BUG] '
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before reporting:
+        * search [existing issues](https://github.com/your-username/telescope-gitignore.nvim/issues)
+        * ensure that telescope-gitignore.nvim is updated to the latest version
+        * please ensure that you are running the latest version of Neovim
+
+  - type: textarea
+    attributes:
+      label: 'Describe the bug'
+      description: 'A clear and concise description of what the bug is.'
+      placeholder: |
+        When I try to [...], it doesn't work as expected.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: 'To Reproduce'
+      description: 'Steps to reproduce the behavior:'
+      placeholder: |
+        1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: 'Expected behavior'
+      description: 'A clear and concise description of what you expected to happen.'
+      placeholder: |
+        I expected that [...]
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: 'Screenshots'
+      description: 'If applicable, add screenshots to help explain your problem.'
+      placeholder: |
+        Drag and drop screenshots here or use ![description](url)
+
+  - type: input
+    attributes:
+      label: 'Operating System'
+      description: 'Your OS and version'
+      placeholder: 'e.g. Ubuntu 20.04, macOS 13.0, Windows 11'
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: 'Neovim version'
+      description: 'Output of `nvim --version`'
+      placeholder: 'e.g. 0.9.0, 0.10.0'
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: 'Telescope version'
+      description: 'Your Telescope version'
+      placeholder: 'e.g. 0.1.8'
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: 'Plugin version'
+      description: 'telescope-gitignore.nvim version'
+      placeholder: 'e.g. 1.0.0'
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: 'Additional context'
+      description: 'Add any other context about the problem here.'
+      placeholder: |
+        Any additional information that might be helpful.
