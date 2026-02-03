@@ -54,6 +54,7 @@ require("telescope").load_extension("gitignore")
 
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 - [plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
+- [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
 - `curl` command-line tool (for fetching templates from GitHub)
 
 ## Setup
