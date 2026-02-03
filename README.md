@@ -21,30 +21,33 @@ Features:
 
 ```lua
 {
-  "llawn/telescope-gitignore.nvim",
+  'nvim-telescope/telescope.nvim',
   dependencies = {
-    "nvim-telescope/telescope.nvim",
-    "nvim-lua/plenary.nvim",
+    'nvim-lua/plenary.nvim',
+    'llawn/telescope-gitignore.nvim',
+    'nvim-tree/nvim-web-devicons',
   },
   config = function()
     require("telescope").load_extension("gitignore")
-  end,
+  end
 }
+
 ```
 
-### `packer.nvim`
+### Neovim 0.12+ (vim.pack)
 
 ```lua
-use {
-  "llawn/telescope-gitignore.nvim",
-  requires = {
-    "nvim-telescope/telescope.nvim",
-    "nvim-lua/plenary.nvim",
-  },
-  config = function()
-    require("telescope").load_extension("gitignore")
-  end,
-}
+-- Add plugins to your config
+vim.pack.add({
+  "https://github.com/nvim-lua/plenary.nvim",
+  "https://github.com/nvim-telescope/telescope.nvim",
+  "https://github.com/llawn/telescope-gitignore.nvim",
+  "https://github.com/nvim-tree/nvim-web-devicons",
+})
+
+-- Setup telescope and load extension
+require("telescope").setup({})
+require("telescope").load_extension("gitignore")
 ```
 
 ### Dependencies
@@ -58,14 +61,11 @@ use {
 ### Advanced Configuration
 
 ```lua
-{
-  "llawn/telescope-gitignore.nvim",
-  dependencies = {
-    "nvim-telescope/telescope.nvim",
-    "nvim-lua/plenary.nvim",
-  },
-  config = function()
-    require("telescope-gitignore").setup({
+local telescope = require('telescope')
+
+telescope.setup({
+  extensions = {
+    gitignore = {
       cache_dir = vim.fn.stdpath("data") .. "/telescope-gitignore",
       github_api_url = "https://api.github.com/repos/github/gitignore/contents/",
       notifications = true,
@@ -74,18 +74,21 @@ use {
       on_select = function(name, content)
         -- Custom behavior when template is selected
         local path = vim.fn.getcwd() .. "/.gitignore"
-        local f = io.open(path, "a") or io.open(path, "w")
+        local f = io.open(path, "a+")
 
         if f then
-          f:write("\n# --- " .. name .. " --- \n" .. content .. "\n")
+          f:write("\n" .. content .. "\n")
           f:close()
-          vim.notify("Added " .. name .. " to .gitignore", vim.log.levels.INFO)
+        else
+          vim.notify("Error: Unable to write to .gitignore", vim.log.levels.ERROR)
         end
       end,
-    })
-    require("telescope").load_extension("gitignore")
-  end,
-}
+    },
+  }
+})
+
+-- --- Keybindings ---
+vim.keymap.set('n', '<leader>fgt', telescope.extensions.gitignore.gitignore, { desc = 'Gitignore Templates' })
 ```
 
 ### Configuration Options
