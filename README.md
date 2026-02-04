@@ -15,7 +15,7 @@ Features:
 - Customizable selection behavior
 - Automatic caching for performance
 
-![telescope-gitignore-example](/assets/header.png)
+![telescope-gitignore-example](https://github.com/user-attachments/assets/8e5b4936-869d-42ff-a874-602ecc5a67e6)
 
 ## Install
 
