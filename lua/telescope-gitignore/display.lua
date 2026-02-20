@@ -78,17 +78,16 @@ local icon_nf = {
   ["Zephir"]               = { logo = "󱥒" },
 }
 
+--- @class TelescopeGitignoreEntry
+--- @field value GitignoreTemplate The underlying template data
+--- @field ordinal string The string used for searching/sorting
+--- @field name string The display name
+--- @field display function The function that renders the UI line
 
----@class TelescopeGitignoreEntry
----@field value GitignoreTemplate The underlying template data
----@field ordinal string The string used for searching/sorting
----@field name string The display name
----@field display function The function that renders the UI line
----
----@alias TelescopeGitignoreDisplayer fun(entry: TelescopeGitignoreEntry): string, table[] # Returns display string and highlight map
+--- @alias TelescopeGitignoreDisplayer fun(entry: TelescopeGitignoreEntry): string, table[] # Returns display string and highlight map
 
 --- This is the custom entry_display for the TelescopeGitignore menu
---- It adds icon to some gitignore files
+--- It adds icon to some gitignore templates
 --- @return TelescopeGitignoreDisplayer
 function M.gen_make_display()
   local displayer = entry_display.create({
